@@ -1,9 +1,9 @@
 {
-    "name": "cris/struct-core",
+    "name": "ph/struct-core",
     "description": "build struct",
     "autoload": {
         "psr-4": {
-            "Cris\\StructCore\\": "src/"
+            "Ph\\StructCore\\": "src/"
         }
     },
     "authors": [
