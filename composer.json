@@ -21,5 +21,16 @@
             "P7\\StructCore\\CoreServiceProvider"
           ]
         }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "license": "MIT",
+    "autoload-dev": {
+        "psr-4": {
+            "P7\\StructCore\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "phpunit"
     }
 }
