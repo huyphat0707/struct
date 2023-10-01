@@ -13,12 +13,12 @@
         }
     ],
     "require": {
-        "laravel/framework": "^8.37|^9.0|^10.0"
+        "laravel/framework": "^8.37|^9.0|^10.*"
     },
     "extra": {
         "laravel": {
           "providers": [
-            "Ph\\StructCore\\CoreServiceProvider"
+            "P7\\StructCore\\CoreServiceProvider"
           ]
         }
     }
