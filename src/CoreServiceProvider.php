@@ -1,8 +1,8 @@
 <?php
 
-namespace Cris\StructCore;
+namespace P7\StructCore;
 
-use Cris\StructCore\Command\MakeRepository;
+use P7\StructCore\Command\MakeRepository;
 use Illuminate\Support\ServiceProvider;
 
 class CoreServiceProvider extends ServiceProvider

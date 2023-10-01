@@ -1,6 +1,6 @@
 <?php
 
-namespace Cris\StructCore\Core;
+namespace P7\StructCore\Core;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Collection;
@@ -13,7 +13,7 @@ abstract class BaseService
     protected $collectsData = false;
 
     /**
-     * @var \Cris\StructCore\Contracts\RepositoryInterface
+     * @var \P7\StructCore\Contracts\RepositoryInterface
      */
     protected $repository;
 

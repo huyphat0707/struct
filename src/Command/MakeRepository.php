@@ -1,6 +1,6 @@
 <?php
 
-namespace Cris\StructCore\Command;
+namespace P7\StructCore\Command;
 
 use Illuminate\Console\Command;
 

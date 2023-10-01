@@ -1,5 +1,5 @@
 <?php
-namespace Cris\StructCore\Exceptions;
+namespace P7\StructCore\Exceptions;
 
 class RepositoryException 
 {

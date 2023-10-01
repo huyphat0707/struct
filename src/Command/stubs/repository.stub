@@ -2,7 +2,7 @@
 
 namespace DummyNamespace;
 
-use Cris\StructCore\Core\BaseRepository;
+use P7\StructCore\Core\BaseRepository;
 
 class DummyClass extends BaseRepository
 {

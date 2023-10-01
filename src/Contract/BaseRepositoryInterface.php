@@ -1,6 +1,6 @@
 <?php
 
-namespace Cris\StructCore\Contract;
+namespace P7\StructCore\Contract;
 
 interface BaseRepositoryInterface
 {

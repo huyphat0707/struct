@@ -1,10 +1,10 @@
 <?php
 
-namespace Cris\StructCore\Core;
+namespace P7\StructCore\Core;
 
 use Closure;
-use Cris\StructCore\Contract\BaseRepositoryInterface;
-use Cris\StructCore\Exceptions\RepositoryException;
+use P7\StructCore\Contract\BaseRepositoryInterface;
+use P7\StructCore\Exceptions\RepositoryException;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Database\Eloquent\Model;
 
