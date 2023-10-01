@@ -1,9 +1,9 @@
 {
-    "name": "st/struct-core",
+    "name": "p7/struct-core",
     "description": "build struct",
     "autoload": {
         "psr-4": {
-            "St\\StructCore\\": "src/"
+            "P7\\StructCore\\": "src/"
         }
     },
     "authors": [
