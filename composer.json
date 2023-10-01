@@ -13,7 +13,7 @@
         }
     ],
     "require": {
-        "laravel/framework": "^8.37|^9.0|^10.*"
+        "laravel/framework": "^8.37|^9.0|^10.0"
     },
     "extra": {
         "laravel": {
@@ -24,13 +24,5 @@
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
-    "license": "MIT",
-    "autoload-dev": {
-        "psr-4": {
-            "P7\\StructCore\\Tests\\": "tests/"
-        }
-    },
-    "scripts": {
-        "test": "phpunit"
-    }
+    "license": "MIT"
 }

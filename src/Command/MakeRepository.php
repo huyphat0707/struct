@@ -2,16 +2,16 @@
 
 namespace P7\StructCore\Command;
 
-use Illuminate\Console\Command;
+use Illuminate\Console\GeneratorCommand;
 
-class MakeRepository extends Command
+class MakeRepository extends GeneratorCommand
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'core:repository';
+    protected $signature = 'core:repository {name}';
 
     /**
      * The console command description.
