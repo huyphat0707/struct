@@ -1,9 +1,7 @@
 <?php
-
 namespace P7\StructCore\Command;
 
 use Illuminate\Console\GeneratorCommand;
-
 class MakeRepository extends GeneratorCommand
 {
     /**
