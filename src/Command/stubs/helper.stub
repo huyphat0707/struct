@@ -1,0 +1,14 @@
+<?php
+
+if (!function_exists('{{functionName}}')) {
+    /**
+    * mixed
+    * 
+    * @param mixed
+    * 
+    * @return mixed
+    */
+    function {{functionName}}() {
+        return "";
+    }
+}
