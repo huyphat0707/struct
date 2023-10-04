@@ -4,6 +4,7 @@ namespace P7\StructCore;
 
 use P7\StructCore\Command\MakeRepository;
 use Illuminate\Support\ServiceProvider;
+use P7\StructCore\Command\MakeHelper;
 
 class CoreServiceProvider extends ServiceProvider
 {
@@ -12,7 +13,9 @@ class CoreServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        foreach (glob(app_path() . '/Helpers/*.php') as $filename) {
+            require_once $filename;
+        }
     }
 
     /**
@@ -22,7 +25,8 @@ class CoreServiceProvider extends ServiceProvider
     {
         if ($this->app->runningInConsole()) {
 			$this->commands([
-				MakeRepository::class
+				MakeRepository::class,
+				MakeHelper::class,
 			]);
 		}
     }
