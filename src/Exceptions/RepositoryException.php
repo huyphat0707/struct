@@ -1,7 +1,7 @@
 <?php
 namespace P7\StructCore\Exceptions;
 
-class RepositoryException 
+class RepositoryException
 {
     public function invalidModel() : string {
         return __('model.not_found');

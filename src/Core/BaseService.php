@@ -2,114 +2,104 @@
 
 namespace P7\StructCore\Core;
 
-use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Collection;
+use Illuminate\Contracts\Foundation\Application;
+use P7\StructCore\Contract\BaseRepositoryInterface;
+use P7\StructCore\Exceptions\RepositoryException;
 
 abstract class BaseService
 {
     /**
-     * @var boolean
+     * @var \Illuminate\Contracts\Foundation\Application
      */
-    protected $collectsData = false;
+    protected $app;
 
     /**
-     * @var \P7\StructCore\Contracts\RepositoryInterface
+     * @var $repository
      */
     protected $repository;
 
-    /**
-     * @var \Illuminate\Database\Eloquent\Model|int
-     */
-    protected $model;
+    abstract public function getRepository();
 
     /**
-     * @var mixed
-     */
-    protected $data;
-
-    /**
-     * @var \Illuminate\Database\Eloquent\Model
-     */
-    protected $handler;
-
-    /**
-     * Set the data
+     * Constructor.
      *
-     * @param mixed $data
-     * @return self
+     * @param \Illuminate\Contracts\Foundation\Application $app
      */
-    public function setData($data)
+    public function __construct(Application $app)
     {
-        $this->data = ($data instanceof Collection || ! $this->collectsData) ? $data : new Collection($data);
-
-        return $this;
+        $this->app = $app;
+        $this->resetRepository();
     }
 
     /**
-     * Set the handler
+     * Reset the repository instance.
      *
-     * @param \Illuminate\Database\Eloquent\Model $handler
-     * @return self
+     * @throws string
      */
-    public function setHandler($handler)
+    public function resetRepository()
     {
-        $this->handler = $handler;
-
-        return $this;
-    }
-
-    /**
-     * Set the handler
-     *
-     * @param \Illuminate\Database\Eloquent\Model|int $model
-     * @return self
-     */
-    public function setModel($model)
-    {
-        $this->model = $model;
-
-        return $this;
-    }
-
-    /**
-     * Set the request to service
-     *
-     * @param FormRequest $request
-     * @return self
-     */
-    public function setRequest(FormRequest $request)
-    {
-        $this->setHandler($request->user());
-        $this->setData($request->validated());
-
-        return $this;
-    }
-
-    abstract public function handle();
-
-    /**
-     * Get default pagination limit
-     *
-     * @return integer
-     */
-    protected function getPerPage()
-    {
-        return $this->data['per_page'] ?? 15;
-    }
-
-    /**
-     * Initialize all of the bootable traits on the model.
-     *
-     * @return void
-     */
-    protected function initializeTraits()
-    {
-        $class = static::class;
-
-        foreach (\class_uses_recursive($class) as $trait) {
-            if (method_exists($class, $method = 'initialize'.class_basename($trait))) {
-                $this->$method();
-            }
+        $instance = $this->app->make($this->getRepository());
+        if (!$instance instanceof BaseRepositoryInterface) {
+            throw RepositoryException::invalidModel();
         }
+        $this->repository = $instance;
+    }
+
+    /**
+     * Get all records.
+     *
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function getAll(): \Illuminate\Database\Eloquent\Collection
+    {
+        return $this->repository->all();
+    }
+
+    /**
+     * Get record by ID.
+     *
+     * @param int $id
+     *
+     * @return \Illuminate\Database\Eloquent\Model
+     */
+    public function getById(int|string $id): \Illuminate\Database\Eloquent\Model
+    {
+        return $this->repository->find($id);
+    }
+
+    /**
+     * Create a new record.
+     *
+     * @param array $attributes
+     *
+     * @return \Illuminate\Database\Eloquent\Model
+     */
+    public function create(array $attributes): \Illuminate\Database\Eloquent\Model
+    {
+        return $this->repository->create($attributes);
+    }
+
+    /**
+     * Update a record by ID.
+     *
+     * @param int $id
+     * @param array $attributes
+     *
+     * @return \Illuminate\Database\Eloquent\Model
+     */
+    public function update(int|string $id, array $attributes): \Illuminate\Database\Eloquent\Model
+    {
+        return $this->repository->update($id, $attributes);
+    }
+
+    /**
+     * Delete a record by ID.
+     *
+     * @param int|string $id
+     * @return bool
+     */
+    public function delete(int|string $id): bool
+    {
+        return $this->repository->delete($id);
     }
 }

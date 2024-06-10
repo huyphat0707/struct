@@ -1,0 +1,18 @@
+<?php
+
+namespace DummyNamespace;
+
+use P7\StructCore\Core\BaseService;
+
+class DummyClass extends BaseService
+{
+    /**
+     * Get the repository of service
+     *
+     * @return string
+     */
+    public function getRepository()
+    {
+        return ;
+    }
+}
