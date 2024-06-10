@@ -29,7 +29,7 @@ class MakeHelper extends GeneratorCommand
     {
         return $rootNamespace . '\Helpers';
     }
-    
+
     /**
      * Get the stub file for the generator.
      *
