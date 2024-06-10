@@ -15,25 +15,4 @@ class DummyClass extends BaseRepository
     {
         return ;
     }
-
-    /**
-     * Register relations
-     */
-    public function allowRelations()
-    {
-        return [
-            //
-        ];
-    }
-
-    /**
-     * OrderBy follow fields
-     */
-    public function getOrderableFields()
-    {
-        return [
-            'created_at',
-            'id',
-        ];
-    }
 }

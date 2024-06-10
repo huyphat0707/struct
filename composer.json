@@ -1,6 +1,6 @@
 {
     "name": "p7/struct-core",
-    "description": "build struct",
+    "description": "Create service and repository migration model controller files",
     "autoload": {
         "psr-4": {
             "P7\\StructCore\\": "src/"

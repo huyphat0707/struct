@@ -20,16 +20,6 @@ class MakeHelper extends GeneratorCommand
     protected $description = 'Make a new helper';
 
     /**
-     * Get the stub file for the generator.
-     *
-     * @return string
-     */
-    protected function getStub()
-    {
-        return __DIR__ . '/stubs/helper.stub';
-    }
-
-    /**
      * Get the default namespace for the class.
      *
      * @param  string  $rootNamespace
@@ -39,20 +29,38 @@ class MakeHelper extends GeneratorCommand
     {
         return $rootNamespace . '\Helpers';
     }
-    
+
     /**
-     * Build the class with the given name.
+     * Get the stub file for the generator.
      *
-     * @param  string  $name
      * @return string
      */
-    protected function buildClass($name)
+    protected function getStub()
     {
-        $functionName = $this->option('function') ?: 'defaultFunction';
+        return __DIR__ . '/stubs/helper.stub';
+    }
 
-        $stub = parent::buildClass($name);
-        $stub = str_replace('{{functionName}}', Str::camel($functionName), $stub);
+    public function handle()
+    {
+        $functionName = $this->option('function');
 
-        return $stub;
+        if (!$functionName) {
+            $functionName = $this->argument('name');
+        }
+
+        $functionName = Str::camel($functionName);
+        $stub = $this->getStubContent();
+        $stub = str_replace('{{functionName}}', $functionName, $stub);
+        $this->files->put($this->getPath($this->getNameInput()), $stub);
+    }
+
+     /**
+     * Get the content of the stub file.
+     *
+     * @return string
+     */
+    protected function getStubContent()
+    {
+        return $this->files->get(__DIR__ . '/stubs/helper.stub');
     }
 }

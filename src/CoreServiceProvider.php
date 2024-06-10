@@ -4,8 +4,9 @@ namespace P7\StructCore;
 
 use P7\StructCore\Command\MakeRepository;
 use Illuminate\Support\ServiceProvider;
+use P7\StructCore\Command\MakeService;
 use P7\StructCore\Command\MakeHelper;
-
+use P7\StructCore\Command\MakeCrud;
 class CoreServiceProvider extends ServiceProvider
 {
     /**
@@ -27,6 +28,8 @@ class CoreServiceProvider extends ServiceProvider
 			$this->commands([
 				MakeRepository::class,
 				MakeHelper::class,
+				MakeService::class,
+				MakeCrud::class,
 			]);
 		}
     }
