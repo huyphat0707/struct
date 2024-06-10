@@ -4,6 +4,7 @@ namespace P7\StructCore\Command;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Str;
 
 class MakeCrud extends Command
 {
@@ -67,9 +68,9 @@ class MakeCrud extends Command
      */
     private function createMigration($name)
     {
-        $migrationName = str_plural(strtolower($name));
+        $migrationName = Str::plural(Str::snake(strtolower($name)));
 
-        Artisan::call('make:migration', ['name' => $migrationName]);
+        Artisan::call('make:migration', ['name' => "create_{$migrationName}_table"]);
     }
 
     /**
