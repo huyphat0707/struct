@@ -45,7 +45,7 @@ class MakeCrud extends Command
      */
     private function createModel($name)
     {
-        Artisan::call('make:model', ['name' => "Models/{$name}"]);
+        Artisan::call('make:model', ['name' => "{$name}"]);
     }
 
     /**
@@ -82,7 +82,6 @@ class MakeCrud extends Command
     {
         Artisan::call('core:service', ['name' => "{$name}Service"]);
     }
-
 
     /**
      * Create a new repository.
